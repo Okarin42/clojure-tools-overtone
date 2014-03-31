@@ -26,7 +26,7 @@ After we got some very basic theory covered we can get started - with more theor
 For this project I used a local installation of SuperCollider. In addition to that Overtone is shipped with a SuperCollider Server inside. There we have it: Two different kind of servers - the internal and the external. As always there is a downside on using either one of them.
 
 \section{Different kind of servers}
-Let's have a look at the difference between the internal and the external SuperCollider-Server. Both of them are working nearly flawlessy but each of them has its own pro and cons.
+Let us have a look at the difference between the internal and the external SuperCollider-Server. Both of them are working nearly flawlessy but each of them has its own pro and cons.
 \begin{itemize}
 	\item Internal Server\\
 		\begin{itemize}
@@ -99,13 +99,13 @@ Now we are ready to do some ... music?
 
 \chapter{Entering the world of music!}
 With Overtone loaded and the REPL awaiting commands we are theoretically ready to code music. But what is music\footnote{This is not trivial and I will skip most of the theory behind music}? In a very abstract way you can say 'Music is noise that sounds good'. Music needs timing to sound good. You can play random notes or chords which are just some sin-waves but that isn't what music is. Well basically that's music but it doesn't have soul if you do it that way. There is more to it than a scientific approach\footnote{Music is not science it's more. Music is a feeling - it has emotions and lives}.
-Not making this too complicated - let's say we want to make some noise.\\
+Not making this too complicated - let us say we want to make some noise.\\
 
 A warning to everyone - fooling around with noise can and will impare your hearing! Synthesizers normally don't have a trampoline installed that protects your ears if the noise gets too loud!\\
-Well we are talking Overtone and Sam Aaron implemented this save cushion for your hearning. It might get loud but not too loud to destroy your hearing - anyway be very careful! Don't use a headset if you test this stuff. If you do for heavens sake lower your volume!!  
+Well we are talking Overtone and Sam Aaron implemented this save cushion for your hearning. It might get loud but not too loud to destroy your hearing - anyway be very careful! 
 
 \section{Noise generation}
-Overtone has a lot of predefined noise-generators which we can use to output our first sound. Let's do something simple. Let's play a sin-wave at 440Hz\footnote{this is not randomly picked}. 
+Overtone has a lot of predefined noise-generators which we can use to output our first sound. Let us do something simple. Let us play a sin-wave at 440Hz. 
 To understand what is going on here, a quick example:
 
 \begin{lstlisting}
@@ -152,7 +152,7 @@ We can even define different instruments which we can use.
 Inst creates the SuperCollider Synthesizer definition and loads it into the SuperCollider server. It returns a function to start this synthesizer. After those commands the 'foo' synthesizer and 'mysynth' are emitting sounds until we either kill them or stop the whole playback.
 
 \subsection{Amplitude modulation and behavior control}
-While the synthesizers are playing it is possible to change their behaviour. Let's define an instrument that uses a saw-wave synthesizer which emits a frequency of 440Hz with and amplitude of 0.3.
+While the synthesizers are playing it is possible to change their behaviour. Let us define an instrument that uses a saw-wave synthesizer which emits a frequency of 440Hz with and amplitude of 0.3.
 \begin{lstlisting}
 (definst bar [amp 0.3 freq 440] (* amp (saw freq)))
 (bar 1)
@@ -186,7 +186,7 @@ So far for the theory. That's all we need to know
 	\item a chord = multile frequencies which overlay each other
 \end{itemize}
 
-Let's look at this in action. We need something that can give us a sound at a specific frequency. 
+Let us look at this in action. We need something that can give us a sound at a specific frequency. 
 
 \begin{lstlisting}
 (definst saw-wave [freq 440 attack 0.01 sustain 0.4 release 0.1 vol 0.4] 
@@ -210,7 +210,7 @@ Notes cannot only be represented by a specific frequency but also by \gls{MIDI} 
 (saw-wave (midi->hz 72)) ; this is C5
 (saw-wave (midi->hz 60)) ; This is C4
 \end{lstlisting}
-'midi-hz <n>' translates the midi-value to a freqzenzy which is put the input for our saw-wave.\\
+'midi$\rightarrow$hz $<n>$' translates the midi-value to a freqzenzy which is put the input for our saw-wave.\\
 Okay, simple as that but who wants to remember a frequency or a plain number, look at the code above and you can see that each note has a name, a frequency and a midi-value. They all represent the same thing!\\ Now, wouldn't it be a lot easier to just write '(play :A4)' instead of the stuff above? Turns out that it's possible.
 \begin{lstlisting}
 ;; Let's make it even easier
@@ -224,7 +224,7 @@ Okay, simple as that but who wants to remember a frequency or a plain number, lo
 \end{lstlisting}
 There we go. What happens is that (note <note>) return the midi-value of a note which is mapped to a frequency which is passed to your saw-wave which plays that frequency.\\
 
-After notes we can do what I explained above - we can combine notes to play a chord. Don't worry Overtone as some nifty functions to help us create a chord. Actually it's called 'chord'.
+After notes we can do what I explained above - we can combine notes to play a chord. Don't worry Overtone has a function to help us create a chord. Actually it's called 'chord'.
 We just need to take care of one tiny bit that I mentioned above. Playing notes at the same time.
 \begin{lstlisting}
 (defn play-chord [chord]
@@ -244,7 +244,7 @@ As I said I will skip most os the music theory part just accept that this below 
 With this we have played our first chord and understood how it is handled. We can go one step higher in the abstraction and use an instrument to make music.
 
 \section{Stringed Synthesizer aka Guitar}
-Since I wanted to see what is possible with Overtone I started programming an insturment that should behave like a guitar\footnote{I play electric guitar myself so this was the obvious choice}. After writing several lines of code something in my head went like 'Use the source Luke - use the source'. I rushed over to the overtone repository\cite{osr} and started looking if someone already had that idea. It turned out they had, there was already a functioning string synthesizer which I could use and therefore could destroy a week of wrecking my brain on how to describe a guitar in Overtone.\footnote{Always look at the source and see if there is something you can use}.
+Since I wanted to see what is possible with Overtone I started programming an insturment that should behave like a guitar\footnote{I play electric guitar myself so this was the obvious choice}. After writing several lines of code I rushed over to the overtone repository\cite{osr} and started looking if someone already had that idea. It turned out they had, there already was a functioning string synthesizer which I could use.
 
 \subsection{Creating a stringed synthesizer}
 To use a string synthesizer you can define a variable that uses the pedefined guitar from 'overtone.synth.stringed' this instrument named 'guitar' has six strings and isn't freed when all strings go silent.
@@ -292,7 +292,7 @@ This function either takes a vector which describes the fret-positon of the corr
 
 \section{Metronomes}
 While programming a short piece of music I didn't know about the metronomes. Turns out that a whole day was wasted because of getting the right timing. And that's what metronomes are for. They tick in beats endlessly in the background. There is nothing more to them. They just tick at a given speed - the 'speed' is actually called 'beats-per-minute' (bpm).\\
-Let's define an metronome in overtone.
+Let us define an metronome in overtone.
 \begin{lstlisting}
 (def one-twenty-bpm (metronome 120))
 \end{lstlisting}
@@ -314,7 +314,7 @@ Take the following code
 You will hear a sound every second\footnote{I have informed the Overtone community about this problem and am currently awaiting an answer about this matter.}
 
 \subsection{Working with metronomes}
-We have to compensate the error from above from now on. Let's have a look at what the metronome does when when we call it.
+We have to compensate the error from above from now on. Let us have a look at what the metronome does when when we call it.
 \begin{lstlisting}
 (def metro (metronome 120))
 (metro) ; returns the current tick - do this multiple times
@@ -325,7 +325,7 @@ We have to compensate the error from above from now on. Let's have a look at wha
 Since I wanted to create something on my own I decided to try to implement a function that realises sliding notes on a guitar. What is that anyway? Well think about it this way: You play a note on your guitar and move the finger up or down the fretbroad. It sounds great and it's fun to play, still there is no function in the stringed-synth which allows this behaviour. What we can do with the string synth is - picking a note or chord and muting it. In theory all that's needed to be done is to allow the stringed-synth to move the notes on the fretboard up and down play playing the note.
 A down-move is i.e. from fret 17 to fret 10. A up-move is i.e. from fret 10 to fret 17.\\
 
-A quick look at the definition of stringed-synth shows that something like what we need already happens in function 'pick-string'. This function sets the note on a specific string, it can even mute it. Let's build up on that.
+A quick look at the definition of stringed-synth shows that something like what we need already happens in function 'pick-string'. This function sets the note on a specific string, it can even mute it. Let us build up on that.
 
 \begin{lstlisting}
 (defn- fret-to-note
@@ -354,7 +354,7 @@ A quick look at the definition of stringed-synth shows that something like what 
 )
 \end{lstlisting}
 The 'fret-to-note' and 'mkarg' are non-public functions from overtone.synth.stringed and to make them available in my namespace I simple had to copy them over.\\
-Let's have a look at the 'set-fret'-function. It takes three arguments, the instrument to be modified, the string-index of that instrument and the fret that should be applied to the string-index.
+Let us have a look at the 'set-fret'-function. It takes three arguments, the instrument to be modified, the string-index of that instrument and the fret that should be applied to the string-index.
 
 It can be used like this.
 
@@ -372,7 +372,7 @@ It can be used like this.
 \end{lstlisting}
 
 Now we are able to program slides in a more or less very uncomfortable way. There is no timing there and you need more than one line to do a slide!
-Let's solve that problem
+Let us solve that problem
 
 \begin{lstlisting}
 (defn slide-string
