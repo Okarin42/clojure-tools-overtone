@@ -1,0 +1,24 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}Overtone}{3}{section.1.1}
+\contentsline {section}{\numberline {1.2}SuperCollider}{3}{section.1.2}
+\contentsline {section}{\numberline {1.3}Overtone and SuperCollider collaboration}{3}{section.1.3}
+\contentsline {chapter}{\numberline {2}Entering the world of music?}{4}{chapter.2}
+\contentsline {section}{\numberline {2.1}Different kind of servers}{4}{section.2.1}
+\contentsline {section}{\numberline {2.2}Getting connected to ScSynth}{5}{section.2.2}
+\contentsline {chapter}{\numberline {3}Entering the world of music!}{6}{chapter.3}
+\contentsline {section}{\numberline {3.1}Noise generation}{6}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Amplitude modulation and behavior control}{7}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Chaining UGens}{7}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}Notes and chords}{8}{section.3.2}
+\contentsline {section}{\numberline {3.3}Stringed Synthesizer aka Guitar}{9}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Creating a stringed synthesizer}{10}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Playing a note}{10}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.3.3}Playing a chord}{10}{subsection.3.3.3}
+\contentsline {section}{\numberline {3.4}Metronomes}{11}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Working with metronomes}{11}{subsection.3.4.1}
+\contentsline {section}{\numberline {3.5}Slide guitar}{11}{section.3.5}
+\contentsline {chapter}{\numberline {4}Recording}{14}{chapter.4}
+\contentsline {chapter}{\numberline {5}Conclusion}{15}{chapter.5}
+\contentsline {chapter}{\numberline {6}Special Thanks}{16}{chapter.6}
+\contentsline {chapter}{Glossary}{17}{section*.2}
