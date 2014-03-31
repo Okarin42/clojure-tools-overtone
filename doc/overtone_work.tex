@@ -281,6 +281,24 @@ With this we will play the second string on our guitar which is the A-string. Ov
 The second argument is the fret-number which modifies the frequency of the emitted sound.
 There is an optional third argument, this is the starting time of the note\footnote{my presentation material covers this}. This is important for note-progressions which is basically the timed playing of notes in a specific order.
 
+\begin{lstlisting}
+; a function to calculate the starting point of a note
+(defn playat [time delta offset]
+  (+ time (* offset delta))
+)
+
+(let[time (now) delta 250]
+  (guitar-pick g 0 0 (playat time delta 0))
+  (guitar-pick g 1 0 (playat time delta 1))
+  (guitar-pick g 2 0 (playat time delta 2))
+  (guitar-pick g 3 0 (playat time delta 3))
+  (guitar-pick g 4 0 (playat time delta 4))
+  (guitar-pick g 5 0 (playat time delta 5))
+)
+\end{lstlisting} 
+
+This piece of code will pick each string of the guitar one after another. We use the last optional argument to define the starting point of the note.
+
 \subsection{Playing a chord}
 Already explained is that a chord is nothing else than several notes played in a fast progression. The string synth makes this even easier for us because it comes with a handy function.
 \begin{lstlisting}
@@ -288,10 +306,10 @@ Already explained is that a chord is nothing else than several notes played in a
 (guitar-strum g [-1 3 2 0 1 0] :down 0.01) ; C
 (guitar-strum g :C :up 0.01)
 \end{lstlisting} 
-This function either takes a vector which describes the fret-positon of the corresponting string or a already predifined short-name for that vector. Furthermore it makes a slight difference whether you play the chord as an up-stroke or as a down-stroke. The last argument is the time that it waits before it plays the next note from the vector.\\ Like 'guitar-pick' this function has another optional argument which represetns the starting time of the chord(note-progression).
+This function either takes a vector which describes the fret-positon of the corresponting string or a already predifined short-name for that vector. Furthermore it makes a slight difference whether you play the chord as an up-stroke or as a down-stroke. The last argument is the time that it waits before it plays the next note from the vector.\\ Like 'guitar-pick' this function has another optional argument which represents the starting time of the chord(note-progression).
 
 \section{Metronomes}
-While programming a short piece of music I didn't know about the metronomes. Turns out that a whole day was wasted because of getting the right timing. And that's what metronomes are for. They tick in beats endlessly in the background. There is nothing more to them. They just tick at a given speed - the 'speed' is actually called 'beats-per-minute' (bpm).\\
+While programming a short piece of music I didn't know about the metronomes. Turns out that a whole day was wasted because of getting the right timing. And that's what metronomes are for, for timing. They tick in beats endlessly in the background. There is nothing more to them. They just tick at a given speed - the 'speed' is actually called 'beats-per-minute' (bpm).\\
 Let us define an metronome in overtone.
 \begin{lstlisting}
 (def one-twenty-bpm (metronome 120))
