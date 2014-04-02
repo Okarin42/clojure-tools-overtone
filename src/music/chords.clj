@@ -39,8 +39,8 @@
   (doseq [note chord] (play note)))
 
 ;; We can play many types of chords.
-;; For the complete list, visit https://github.com/overtone/overtone/blob/master/src/overtone/music/pitch.clj and search for "def CHORD"
 (chord :A4 :major) ; this creates the sequences of midi-notes to be played
+
 ;feed it to play-chord
 (play-chord (chord :A4 :major))
 

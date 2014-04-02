@@ -17,7 +17,7 @@
 (defn- mkarg
   "useful for making arguments for the instruments strings"
   [s i]
-  (keyword (format "%s-%d" s i)))
+  (keyword (format "%s-%d" s i))); creates a string (think about printf)
 
 ; ======
 
@@ -188,9 +188,24 @@
      :lp-freq 5000 :lp-rq 0.25
      :rvb-mix 0.5 :rvb-room 0.7 :rvb-damp 0.4)
 
-(slide-string sg 2 3 9 (now) 50 1)
+(slide-string sg 2 17 7 (now) 80 0)
 (slide-string sg 2 9 3 (now) 50 1)
 (guitar-pick sg 2 5)
+(stop)
+
+(defn bend-string
+  "Bend a string of an inst either full (1) or half(0)"
+  [the-inst the-string the-fret bend time]
+  (if (zero? bend)
+    (let [start the-fret end (+ the-fret 1)]
+      (slide-string the-inst the-string start end (now) time 0)
+    )
+    (let [start the-fret end (+ the-fret 2)]
+      (slide-string the-inst the-string start end (now) time 0)
+    )
+  )
+)
+(bend-string sg 4 12 0 50)
 
 
 

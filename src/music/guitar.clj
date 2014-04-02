@@ -110,7 +110,7 @@
     (when note
       (at time (play (powerchord note)))) ;all as PowerChords from powerchord
     (let [next-time (+ time sep)]
-      (apply-by next-time progression [next-time (rest notes) sep]))))
+      (apply-by next-time progression [next-time (rest notes) sep])))) ;try with apply-at (better timing)
 
 (progression (now) melody 400)
 ;Well that sucks ... damn you chords ...
@@ -265,7 +265,10 @@
 )
 ; I found the correct delta by try and error - this has the same mistake as the metronome later one.
 ; this song is play at 124 BPM not 248 !
+
+(recording-start "~/scom.wav")
 (intro-eg 248)
+(recording-stop)
 
 ; Listen to the original
 ; http://www.youtube.com/watch?v=bRfc_Y_AsLo
@@ -307,10 +310,6 @@
     (guitar-strum g [-1 -1 -1 -1 -1 -1] :down 0.01 (+ t (* 4.5 dt)))
   )
 )
-
-(begin)
-(middle)
-(end)
 
 ; get some crunchy sound
 (ctl g :pre-amp 5.0 :distort 0.96
