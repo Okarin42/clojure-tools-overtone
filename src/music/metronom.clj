@@ -121,5 +121,6 @@
 (metro :bpm 248) ; modify the metronome to be faster and compensates for the metronome error :)
 ; maybe it's coincidence that this is the same as the number for my own metronome
 (intro-g metro (metro))
+(stop)
 
 

@@ -166,7 +166,7 @@
   (let [i (atom 1)] ; used to calculate the offset between the sub-slides
     (doseq 
       [fret (if (< end-fret start-fret) 
-              (reverse (range end-fret (inc start-fret)))
+              (reverse (range end-fret (dec start-fret)))
               (range start-fret (inc end-fret))
             )
       ]
